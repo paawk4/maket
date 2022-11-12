@@ -12,19 +12,39 @@ public class MainActivity extends AppCompatActivity {
     private EditText loginText;
     private EditText passwordText;
     private TextView registerText;
+    private Button registerBtn;
+    private Button getStartedBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        login();
+    }
+
+    private void login() {
         setContentView(R.layout.login);
 
-        loginBtn = findViewById(R.id.login_btn);
-        loginText = findViewById(R.id.login);
-        passwordText = findViewById(R.id.password);
+        loginBtn = findViewById(R.id.login_btn);;
         registerText = findViewById(R.id.register);
 
         registerText.setOnClickListener(v -> {
-            setContentView(R.layout.register);
+            register();
         });
+    }
 
+    private void register() {
+        setContentView(R.layout.register);
+        registerBtn = findViewById(R.id.register_btn);
+        registerBtn.setOnClickListener(v -> {
+            congrats();
+        });
+    }
+
+    private void congrats() {
+        setContentView(R.layout.congrats);
+        getStartedBtn = findViewById(R.id.get_started_btn);
+        getStartedBtn.setOnClickListener(v -> {
+            login();
+        });
     }
 }
